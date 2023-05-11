@@ -8,7 +8,9 @@ Ref. https://python-poetry.org
 # Run App
 
 ` poetry run flask --app app/webapp run`
+
 or
+
 `poetry shell`
 `flask --app app/webapp run`
 
@@ -16,10 +18,19 @@ or
 # Run Flask Shell
 `poetry run flask --app app/webapp shell`
 
-Or
+or
+
 `poetry shell`
-`export FLASK_APP=app.webapp`
-`flask run`
+
+ Unix Bash (Linux, Mac, etc.): 
+>`$` `export FLASK_APP=app.webapp`      
+>`$` `flask run`
+ 
+Windows PowerShell:
+> `$env:FLASK_APP = "app.webapp"`
+> `flask run`
+
+
 
 
 # Admin DB 
@@ -29,7 +40,13 @@ Ref. https://flask-migrate.readthedocs.io/en/latest/
 `flask db migrate -m "Initial migration."`
 `flask db upgrade`
 
-`export FLASK_APP=app.webapp`
+ Unix Bash (Linux, Mac, etc.): 
+>`$` `export FLASK_APP=app.webapp` 
+`flask seed movies`
+`flask seed users`
+     
+Windows PowerShell:
+> `$env:FLASK_APP = "app.webapp"`
 `flask seed movies`
 `flask seed users`
 
