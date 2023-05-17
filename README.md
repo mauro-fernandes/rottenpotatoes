@@ -3,32 +3,35 @@
 Ref. https://python-poetry.org
 
 # Install Dependencies
-`poetry install` 
+    poetry install
 
 # Run App
+    poetry run flask --app app/webapp run
 
-` poetry run flask --app app/webapp run`
+`or...`
 
-or
-
-`poetry shell`
-`flask --app app/webapp run`
+    poetry shell
+    flask --app app/webapp run
 
 
-# Run Flask Shell
-`poetry run flask --app app/webapp shell`
+## Run Flask Shell
+    poetry run flask --app app/webapp shell
 
-or
+## Run just "flask run" command (enviroment variable)
 
-`poetry shell`
+    poetry shell
 
- Unix Bash (Linux, Mac, etc.): 
->`$` `export FLASK_APP=app.webapp`      
->`$` `flask run`
+`and..`
+
+###### `$` Unix Bash (Linux, Mac, etc.): 
+    export FLASK_APP=app.webapp  
+
+    flask run
  
-Windows PowerShell:
-> `$env:FLASK_APP = "app.webapp"`
-> `flask run`
+###### `>` Windows PowerShell:
+    $env:FLASK_APP = "app.webapp"
+    
+    flask run
 
 
 
@@ -36,20 +39,33 @@ Windows PowerShell:
 # Admin DB 
 Ref. https://flask-migrate.readthedocs.io/en/latest/
 ## Create a initial migration repository
-`flask db init`
-`flask db migrate -m "Initial migration."`
-`flask db upgrade`
 
- Unix Bash (Linux, Mac, etc.): 
->`$` `export FLASK_APP=app.webapp` 
-`flask seed movies`
-`flask seed users`
+    poetry shell
+    
+    flask db init
+    
+    flask db migrate -m "Initial migration."
+    
+    flask db upgrade
+
+
+###### `$` Unix Bash (Linux, Mac, etc.): 
+
+    export FLASK_APP=app.webapp 
+    
+    flask seed movies
+        
+    flask seed users
      
-Windows PowerShell:
-> `$env:FLASK_APP = "app.webapp"`
-`flask seed movies`
-`flask seed users`
+
+###### `>` Windows PowerShell:
+
+    $env:FLASK_APP = "app.webapp"
+
+    flask seed movies
+
+    flask seed users
 
 ## After updating the model
-`flask db upgrade`
+    flask db upgrade
 
