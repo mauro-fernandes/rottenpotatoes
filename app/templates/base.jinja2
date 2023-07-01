@@ -2,7 +2,7 @@
 {% from 'bootstrap5/form.html' import render_form %}
 {% from 'bootstrap5/nav.html' import render_nav_item, render_breadcrumb_item %}
 <!doctype html>
-<html lang="en">
+<html lang="en" data-bs-theme="auto" >
 
 <head>
     <meta charset="utf-8">
@@ -19,12 +19,18 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     {% endblock %}
 
-    <title>Your page title</title>
+    <title>
+        {%block title%}Your page title{% endblock %}
+    </title>
     {% endblock %}
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <!--nav class="navbar navbar-expand-lg navbar-dark mb-4 " style="background-color: #198754"-->
+    <!--nav class="navbar navbar-expand-lg mb-4 bg-success" data-bs-theme="dark"-->
+    <nav class="navbar navbar-expand-lg mb-4 navbar-dark bg-primary" data-bs-theme="dark">
+    <!--nav class="navbar navbar-expand-lg mb-4 navbar-dark bg-success bd-mode-toggle"-->
+            <!-- Navbar content -->
         <div class="container">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -32,12 +38,20 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav mr-auto" >
+                    <!--a class="navbar-brand " href="{{ url_for('main.index') }}">Rotten Potatoes</a-->
+                    
                     {{ render_nav_item('main.index', 'Home') }}
+                    <a class="navbar-brand " style="color:#ffffff" href="{{ url_for('main.index') }}"><i class="bi bi-house-door-fill"></i></a>
                     {{ render_nav_item('movies.index', 'Movies') }}
+                    <a class="navbar-brand " style="color:#ffffff" href="{{ url_for('movies.index') }}"><i class="bi bi-film"></i></a>
+                    
                     {% if current_user.is_authenticated %}
                     {{ render_nav_item('moviegoers.index', 'Users' ) }}
+                    <a class="navbar-brand " style="color:#ffffff" href="{{ url_for('moviegoers.index') }}"><i class="bi bi-people-fill"></i></a>
                     {{ render_nav_item('auth.profile.me', current_user.username ) }}
+                    <a class="navbar-brand " style="color:#ffffff" href="{{ url_for('auth.profile.me') }}"><i class="bi bi-person-circle"></i></a>
+                    
                     {{ render_nav_item('auth.session.logout', 'Logout') }}
                     {% else %}
                     {{ render_nav_item('auth.session.login', 'Login') }}
@@ -47,9 +61,10 @@
         </div>
     </nav>
     <main class="container">
+        {% block content %}
         {{ render_messages(container=False, dismissible=True, dismiss_animate=True) }}
         <!-- Your page content -->
-        {% block content %}{% endblock %}
+        {% endblock %}
     </main>
 
     <footer class="clearfix text-center">

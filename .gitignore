@@ -161,4 +161,4 @@ cython_debug/
 #.idea/
 
 app/data.sqlite
-/migrations/
+migrations/
